@@ -1,13 +1,9 @@
 #!/bin/bash
 
-input_dir="./input_data/test_data1_single"
-output_dir="./out_put/daruma_single"
+# Please set the input fasta file path. Sample input fasta files are in the input_data directory.
+input_file="./input_data/test_data1_single/DP01108.fasta"
 
-mkdir -p "$output_dir"
+# Please set the output file path.
+output_file="./out_put/DP01108.out"
 
-for file in "$input_dir"/*; do
-    echo "Processing $file"
-    filename=$(basename "$file")
-    ac="${filename%.*}"
-    python3 ./../daruma/cpu/predict.py "$file" -o "./out_put/daruma_single/${ac}.out"
-done
+python3 ./../daruma/cpu/predict.py ${input_file} -o ${output_file}
